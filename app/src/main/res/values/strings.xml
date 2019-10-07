@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">This is a change</string>
+    <string name="app_name">Sample APP</string>
+    <string name="sample_text">This is a sample text</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
