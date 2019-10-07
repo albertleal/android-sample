@@ -1,4 +1,4 @@
-package com.albertleal.sample.SecondScene;
+package com.albertleal.sample.Scenes.SecondScene;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

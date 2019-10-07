@@ -1,4 +1,4 @@
-package com.albertleal.sample.FirstScene;
+package com.albertleal.sample.Scenes.FirstScene;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.albertleal.sample.R;
-import com.albertleal.sample.SecondScene.SecondSceneActivity;
+import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstSceneView;
+import com.albertleal.sample.Scenes.SecondScene.SecondSceneActivity;
 
 public class FirstSceneActivity extends AppCompatActivity implements IFirstSceneView {
 
@@ -81,8 +82,15 @@ public class FirstSceneActivity extends AppCompatActivity implements IFirstScene
 
     @Override
     public void navigateToSecondScene() {
-        Intent view = new Intent(this, SecondSceneActivity.class);
-        view.setAction(Intent.ACTION_VIEW);
-        startActivity(view);
+        final FirstSceneActivity activity = this;
+
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Intent view = new Intent(activity, SecondSceneActivity.class);
+                view.setAction(Intent.ACTION_VIEW);
+                startActivity(view);
+            }
+        });
     }
 }

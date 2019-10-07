@@ -1,4 +1,11 @@
-package com.albertleal.sample.FirstScene;
+package com.albertleal.sample.Scenes.FirstScene;
+
+import com.albertleal.sample.Entities.*;
+import com.albertleal.sample.Helpers.CustomResponseListener;
+import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstSceneInteractor;
+import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstScenePresenter;
+import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstSceneView;
+
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -6,10 +13,12 @@ import java.util.TimerTask;
 public class FirstScenePresenter implements IFirstScenePresenter {
     private AppModel app;
     private IFirstSceneView view;
+    private IFirstSceneInteractor interactor;
 
     //The constructor where we are going to initialize and parametrize
     public FirstScenePresenter(IFirstSceneView view) {
         this.app = new AppModel();
+        this.interactor = new FirstSceneInteractor();
         this.view = view;
     }
 
@@ -35,12 +44,18 @@ public class FirstScenePresenter implements IFirstScenePresenter {
 
         }
 
-        new Timer().schedule(new TimerTask() {
+        this.interactor.fetchUser(new CustomResponseListener() {
             @Override
-            public void run() {
+            public void onResponseReceived(Object user) {
                 view.hideProgressBar();
                 view.navigateToSecondScene();
             }
-        }, 1000);
+
+            @Override
+            public void onError() {
+                view.changeTextViewWithText("There's been an error");
+            }
+        });
+
     }
 }

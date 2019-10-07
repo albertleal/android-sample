@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecondScene.SecondSceneActivity"></activity>
-        <activity android:name=".FirstScene.FirstSceneActivity"  android:noHistory="true">
+        <activity android:name=".Scenes.SecondScene.SecondSceneActivity"></activity>
+        <activity android:name=".Scenes.FirstScene.FirstSceneActivity"  android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

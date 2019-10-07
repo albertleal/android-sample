@@ -1,4 +1,4 @@
-package com.albertleal.sample.FirstScene;
+package com.albertleal.sample.Scenes.FirstScene.Interfaces;
 
 public interface IFirstScenePresenter {
 
