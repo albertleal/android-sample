@@ -7,7 +7,7 @@ public class FirstScenePresenter implements IFirstScenePresenter {
     private AppModel app;
     private IFirstSceneView view;
 
-
+    //The constructor where we are going to initialize and parametrize
     public FirstScenePresenter(IFirstSceneView view) {
         this.app = new AppModel();
         this.view = view;
@@ -15,17 +15,32 @@ public class FirstScenePresenter implements IFirstScenePresenter {
 
 
     @Override
-    public void setupApp() {
-        this.view.showLoading();
+    public void animateLogin() {
+        //changing some UI
         this.view.changeTextViewWithResource();
-        this.app.setStatus(true);
+
+        //Showing the progressBar
+        this.view.showProgressBar();
+
+        for (int i= 0 ; i <= 100; i++) {
+            final int percentage = i;
+            final int afterMilliSeconds = 10 * i;
+
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    view.updateProgressBar(percentage);
+                }
+            }, afterMilliSeconds);
+
+        }
 
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                view.hideLoading();
+                view.hideProgressBar();
                 view.navigateToSecondScene();
             }
-        }, 2000);
+        }, 1000);
     }
 }

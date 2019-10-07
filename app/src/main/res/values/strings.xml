@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">This is a change</string>
+    <string name="app_name">Sample APP</string>
     <string name="sample_text">This is a sample text</string>
 </resources>
