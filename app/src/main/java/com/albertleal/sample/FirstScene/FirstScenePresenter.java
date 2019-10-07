@@ -1,5 +1,8 @@
 package com.albertleal.sample.FirstScene;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class FirstScenePresenter implements IFirstScenePresenter {
     private AppModel app;
     private IFirstSceneView view;
@@ -17,7 +20,12 @@ public class FirstScenePresenter implements IFirstScenePresenter {
         this.view.changeTextViewWithResource();
         this.app.setStatus(true);
 
-        this.view.hideLoading();
-        this.view.navigateToSecondScene();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                view.hideLoading();
+                view.navigateToSecondScene();
+            }
+        }, 2000);
     }
 }
