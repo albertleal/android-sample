@@ -1,6 +1,6 @@
 package com.albertleal.sample.Entities;
 
-import com.albertleal.sample.Helpers.CustomResponseListener;
+import com.albertleal.sample.Helpers.Callback;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -15,16 +15,20 @@ public class UserModel {
         this.email = email;
     }
 
-    final static int MOCK_DURATION = 1000;
-    public static void fetch(final CustomResponseListener listener) {
+    public static void fetch(final Callback callback) {
+        //We'll respond in a second so we can pretend we're using an async call to a
+        //service.
 
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                listener.onResponseReceived(new UserModel("albert", "albert.leal@eug.es"));
+                //If we want to trigger an error we'll use
+                //listener.onError();
 
+                //Responding as async with a sample UserModel
+                callback.onSuccess(new UserModel("albert", "albert.leal@eug.es"));
             }
-        }, MOCK_DURATION );
+        }, 1000 );
 
     }
 }

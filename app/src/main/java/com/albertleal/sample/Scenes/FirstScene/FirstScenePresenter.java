@@ -1,34 +1,34 @@
 package com.albertleal.sample.Scenes.FirstScene;
 
-import com.albertleal.sample.Entities.*;
-import com.albertleal.sample.Helpers.CustomResponseListener;
+import com.albertleal.sample.Helpers.Callback;
 import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstSceneInteractor;
 import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstScenePresenter;
-import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstSceneView;
+import com.albertleal.sample.Scenes.FirstScene.Interfaces.IFirstSceneActivity;
 
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class FirstScenePresenter implements IFirstScenePresenter {
-    private AppModel app;
-    private IFirstSceneView view;
+    private IFirstSceneActivity view;
     private IFirstSceneInteractor interactor;
 
     //The constructor where we are going to initialize and parametrize
-    public FirstScenePresenter(IFirstSceneView view) {
-        this.app = new AppModel();
+    public FirstScenePresenter(IFirstSceneActivity view) {
         this.interactor = new FirstSceneInteractor();
         this.view = view;
+
+        //Set initial UI state
+        this.view.hideProgressBar();
+
     }
 
 
     @Override
-    public void animateLogin() {
-        //changing some UI
-        this.view.changeTextViewWithResource();
+    public void acceptButtonTapped() {
 
         //Showing the progressBar
+        this.view.blockButton();
         this.view.showProgressBar();
 
         for (int i= 0 ; i <= 100; i++) {
@@ -44,16 +44,18 @@ public class FirstScenePresenter implements IFirstScenePresenter {
 
         }
 
-        this.interactor.fetchUser(new CustomResponseListener() {
+        this.interactor.retrieveUser(new Callback() {
             @Override
-            public void onResponseReceived(Object user) {
+            public void onSuccess(Object user) {
                 view.hideProgressBar();
                 view.navigateToSecondScene();
             }
 
             @Override
             public void onError() {
-                view.changeTextViewWithText("There's been an error");
+                view.hideProgressBar();
+                view.unblockButton();
+                view.showError();
             }
         });
 

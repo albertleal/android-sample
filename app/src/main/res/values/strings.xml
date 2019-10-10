@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Sample APP</string>
-    <string name="sample_text">This is a sample text</string>
-
+    <string name="terms_and_conditions">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend maximus magna ut bibendum. Nunc tincidunt magna quis ligula congue, at vulputate est fermentum. Nunc vitae finibus massa, id dictum odio. Vivamus vestibulum ex sit amet turpis viverra tempor. Nam porta rutrum vehicula. Mauris enim libero, dictum ut congue vel, dictum ac arcu. Ut fermentum odio vel porttitor volutpat. Ut id justo augue.\n\n\n\nAenean vitae massa massa. Praesent rhoncus vel ligula eu rutrum. Etiam vehicula, leo eget lacinia maximus, eros velit placerat velit, at pulvinar sapien leo ut est. Ut id gravida ligula. Suspendisse egestas pharetra magna, non aliquet lorem posuere in. Integer sit amet ex vitae tellus porta pharetra. Donec varius mauris erat, a finibus enim euismod eget. Etiam et tincidunt turpis. Phasellus nec pellentesque turpis, sed pulvinar nisi. Vestibulum at auctor justo. Nullam vitae enim odio. Duis condimentum vitae elit quis molestie. Donec euismod dapibus aliquet. Phasellus est lorem, faucibus eu enim at, eleifend vehicula sem. Suspendisse rutrum molestie felis, in varius sem congue vitae.</string>
+    <string name="accept">Accept</string>
+    <string name="error">There is been an error</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
